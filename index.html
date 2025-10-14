@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CartNow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+</head>
+<link rel="stylesheet" href="index.css">
+<script src="index.js"></script>
+<body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="container">
+            <p>🚀 Free Shipping on Orders Over Rs.75 | 45-Day Hassle-Free Returns</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-main">
+                <a href="#" class="logo">
+                    <i class="fas fa-microchip logo-icon"></i>
+                    CartNow
+                </a>
+                
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search for gadgets, tech, and more...">
+                    <button id="search-button"><i class="fas fa-search"></i></button>
+                    <div class="search-results" id="search-results">
+                        <h3>Search Results</h3>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <a href="#" class="header-action" id="account-action">
+                        <i class="fas fa-user"></i>
+                        <span>Account</span>
+                    </a>
+                    <a href="#" class="header-action" id="wishlist-action">
+                        <i class="fas fa-heart"></i>
+                        <span>Wishlist</span>
+                        <span class="cart-badge" id="wishlist-count">0</span>
+                    </a>
+                    <a href="#" class="header-action" id="cart-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Cart</span>
+                        <span class="cart-badge">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="container">
+                <div class="nav-container">
+                    <ul class="nav-links">
+                        <li><a href="#" class="active">Home</a></li>
+                        <li class="category-dropdown">
+                            <button class="category-btn">
+                                <i class="fas fa-th"></i> Categories
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="category-menu">
+                                <a href="#" data-category="smartphones">Smartphones</a>
+                                <a href="#" data-category="laptops">Laptops & Computers</a>
+                                <a href="#" data-category="audio">Audio & Headphones</a>
+                                <a href="#" data-category="smart-home">Smart Home</a>
+                                <a href="#" data-category="wearables">Wearables</a>
+                                <a href="#" data-category="gaming">Gaming</a>
+                                <a href="#" data-category="cameras">Cameras</a>
+                                <a href="#" data-category="accessories">Accessories</a>
+                            </div>
+                        </li>
+                        <li><a href="#" data-category="deals">Deals</a></li>
+                        <li><a href="#" data-category="new-arrivals">New Arrivals</a></li>
+                        <li><a href="#" data-category="brands">Brands</a></li>
+                        <li><a href="#" data-category="support">Support</a></li>
+                    </ul>
+                    
+                    <div class="contact-info">
+                        <span><i class="fas fa-phone"></i> CartNow</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Next-Gen Tech at Your Fingertips</h1>
+                <p>Discover cutting-edge electronics, smart gadgets, and innovative tech solutions for your modern lifestyle.</p>
+                <a href="#" class="btn" id="hero-shop-now">Shop Now</a>
+                <a href="#" class="btn btn-outline" id="hero-learn-more">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Shop by Category</h2>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card" data-category="smartphones">
+                    <div class="category-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Smartphones</h3>
+                    <p>Latest models from top brands</p>
+                    <a href="#" class="btn category-explore" data-category="smartphones" style="padding: 10px 20px; font-size: 0.9rem;">Explore</a>
+                </div>
+                
+                <div class="category-card" data-category="laptops">
+                    <div class="category-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Laptops</h3>
+                    <p>Powerful computing for work & play</p>
+                    <a href="#" class="btn category-explore" data-category="laptops" style="padding: 10px 20px; font-size: 0.9rem;">Explore</a>
+                </div>
+                
+                <div class="category-card" data-category="audio">
+                    <div class="category-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>Audio</h3>
+                    <p>Immersive sound experiences</p>
+                    <a href="#" class="btn category-explore" data-category="audio" style="padding: 10px 20px; font-size: 0.9rem;">Explore</a>
+                </div>
+                
+                <div class="category-card" data-category="gaming">
+                    <div class="category-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Gaming</h3>
+                    <p>Equipment for serious gamers</p>
+                    <a href="#" class="btn category-explore" data-category="gaming" style="padding: 10px 20px; font-size: 0.9rem;">Explore</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products">
+        <div class="container">
+            <div class="products-header">
+                <div class="section-title" style="text-align: left; margin-bottom: 0;">
+                    <h2>Featured Products</h2>
+                </div>
+                
+                <div class="products-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="new">New</button>
+                    <button class="filter-btn" data-filter="popular">Popular</button>
+                    <button class="filter-btn" data-filter="deals">Deals</button>
+                </div>
+            </div>
+            
+            <div class="products-grid" id="products-container">
+                <!-- Product 1 -->
+                <div class="product-card" data-category="smartphones" data-tags="new" data-id="1">
+                    <div class="product-badge">New</div>
+                    <button class="wishlist-icon" data-product-id="1"><i class="far fa-heart"></i></button>
+                    <div class="product-image">
+                        <img src="Phone.jpeg" alt="Smartphone">
+                    </div>
+                    <div class="product-info">
+                        <h3>Quantum X Pro Smartphone - 256GB</h3>
+                        <div class="product-price">
+                            <span class="current-price">$899</span>
+                            <span class="original-price">$999</span>
+                            <span class="discount">10% off</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(1,204)</span>
+                        </div>
+                        <div class="product-meta">
+                            <span><i class="fas fa-shipping-fast"></i> Free Shipping</span>
+                            <span><i class="fas fa-check"></i> In Stock</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn add-cart" data-product="Quantum X Pro Smartphone" data-price="899" data-id="1" data-image="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                            <button class="action-btn buy-now" data-product="Quantum X Pro Smartphone" data-price="899" data-id="1">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card" data-category="laptops" data-tags="popular" data-id="2">
+                    <div class="product-badge">Sale</div>
+                    <button class="wishlist-icon" data-product-id="2"><i class="far fa-heart"></i></button>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Laptop">
+                    </div>
+                    <div class="product-info">
+                        <h3>NovaBook Pro Laptop - 16" Display</h3>
+                        <div class="product-price">
+                            <span class="current-price">$1,299</span>
+                            <span class="original-price">$1,499</span>
+                            <span class="discount">13% off</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(876)</span>
+                        </div>
+                        <div class="product-meta">
+                            <span><i class="fas fa-shipping-fast"></i> Free Shipping</span>
+                            <span><i class="fas fa-check"></i> In Stock</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn add-cart" data-product="NovaBook Pro Laptop" data-price="1299" data-id="2" data-image="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                            <button class="action-btn buy-now" data-product="NovaBook Pro Laptop" data-price="1299" data-id="2">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card" data-category="audio" data-tags="popular" data-id="3">
+                    <div class="product-badge">Popular</div>
+                    <button class="wishlist-icon" data-product-id="3"><i class="far fa-heart"></i></button>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Headphones">
+                    </div>
+                    <div class="product-info">
+                        <h3>AudioMax Pro Wireless Headphones</h3>
+                        <div class="product-price">
+                            <span class="current-price">$249</span>
+                            <span class="original-price">$299</span>
+                            <span class="discount">17% off</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(2,543)</span>
+                        </div>
+                        <div class="product-meta">
+                            <span><i class="fas fa-shipping-fast"></i> Free Shipping</span>
+                            <span><i class="fas fa-check"></i> In Stock</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn add-cart" data-product="AudioMax Pro Headphones" data-price="249" data-id="3" data-image="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                            <button class="action-btn buy-now" data-product="AudioMax Pro Headphones" data-price="249" data-id="3">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card" data-category="wearables" data-tags="new" data-id="4">
+                    <div class="product-badge">New</div>
+                    <button class="wishlist-icon" data-product-id="4"><i class="far fa-heart"></i></button>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Smartwatch">
+                    </div>
+                    <div class="product-info">
+                        <h3>FitTrack Pro Smartwatch - Health Monitor</h3>
+                        <div class="product-price">
+                            <span class="current-price">$199</span>
+                            <span class="original-price">$249</span>
+                            <span class="discount">20% off</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(934)</span>
+                        </div>
+                        <div class="product-meta">
+                            <span><i class="fas fa-shipping-fast"></i> Free Shipping</span>
+                            <span><i class="fas fa-check"></i> In Stock</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn add-cart" data-product="FitTrack Pro Smartwatch" data-price="199" data-id="4" data-image="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                            <button class="action-btn buy-now" data-product="FitTrack Pro Smartwatch" data-price="199" data-id="4">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card" data-category="gaming" data-tags="deals" data-id="5">
+                    <div class="product-badge">Hot Deal</div>
+                    <button class="wishlist-icon" data-product-id="5"><i class="far fa-heart"></i></button>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Gaming Controller">
+                    </div>
+                    <div class="product-info">
+                        <h3>GameMaster Pro Controller - RGB</h3>
+                        <div class="product-price">
+                            <span class="current-price">$79</span>
+                            <span class="original-price">$119</span>
+                            <span class="discount">34% off</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(1,567)</span>
+                        </div>
+                        <div class="product-meta">
+                            <span><i class="fas fa-shipping-fast"></i> Free Shipping</span>
+                            <span><i class="fas fa-check"></i> In Stock</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn add-cart" data-product="GameMaster Pro Controller" data-price="79" data-id="5" data-image="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                            <button class="action-btn buy-now" data-product="GameMaster Pro Controller" data-price="79" data-id="5">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card" data-category="cameras" data-tags="new" data-id="6">
+                    <div class="product-badge">New</div>
+                    <button class="wishlist-icon" data-product-id="6"><i class="far fa-heart"></i></button>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Camera">
+                    </div>
+                    <div class="product-info">
+                        <h3>PixelPro 4K Action Camera</h3>
+                        <div class="product-price">
+                            <span class="current-price">$299</span>
+                            <span class="original-price">$399</span>
+                            <span class="discount">25% off</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(789)</span>
+                        </div>
+                        <div class="product-meta">
+                            <span><i class="fas fa-shipping-fast"></i> Free Shipping</span>
+                            <span><i class="fas fa-check"></i> In Stock</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn add-cart" data-product="PixelPro 4K Action Camera" data-price="299" data-id="6" data-image="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                            <button class="action-btn buy-now" data-product="PixelPro 4K Action Camera" data-price="299" data-id="6">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Updated with CartNow</h2>
+            <p>Subscribe to our newsletter and be the first to know about new products, exclusive deals, and tech trends.</p>
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CartNow</h3>
+                    <p>Your premier destination for cutting-edge electronics and innovative tech solutions.</p>
+                    <div class="social-links">
+                        <a href="#" data-social="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" data-social="twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" data-social="instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" data-social="youtube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="#" data-category="smartphones">Smartphones</a></li>
+                        <li><a href="#" data-category="laptops">Laptops & Computers</a></li>
+                        <li><a href="#" data-category="audio">Audio & Headphones</a></li>
+                        <li><a href="#" data-category="smart-home">Smart Home</a></li>
+                        <li><a href="#" data-category="wearables">Wearables</a></li>
+                        <li><a href="#" data-category="gaming">Gaming</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#" id="contact-us">Contact Us</a></li>
+                        <li><a href="#" id="faqs">FAQs</a></li>
+                        <li><a href="#" id="shipping-info">Shipping Info</a></li>
+                        <li><a href="#" id="returns">Returns & Exchanges</a></li>
+                        <li><a href="#" id="warranty">Warranty</a></li>
+                        <li><a href="#" id="track-order">Track Your Order</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Sulur, Coimbatore</li>
+                        <li><i class="fas fa-phone"></i> +919790341153</li>
+                        <li><i class="fas fa-envelope"></i> support@cartNow.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 CartNow. All rights reserved. | <a href="#" id="privacy-policy">Privacy Policy</a> | <a href="#" id="terms-of-service">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+<div class="checkout-container" id="checkout-page" style="display: none;">
+        <div class="container">
+            <div class="checkout-header">
+                <a href="#" class="logo" id="checkout-logo">
+                    <i class="fas fa-microchip logo-icon"></i>
+                    CartNow
+                </a>
+                <h2>Secure Checkout</h2>
+                <button class="back-btn" id="back-to-home"><i class="fas fa-arrow-left"></i> Back to Home</button>
+            </div>
+            <div class="checkout-layout">
+                <div class="checkout-main">
+                    <div class="checkout-section">
+                        <h3><i class="fas fa-map-marker-alt"></i> Delivery Address</h3>
+                        <form id="address-form" class="checkout-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fullName">Full Name</label>
+                                    <input type="text" id="fullName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mobile">Mobile Number</label>
+                                    <input type="tel" id="mobile" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="pincode">Pincode</label>
+                                    <input type="text" id="pincode" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address (Area and Street)</label>
+                                <textarea id="address" rows="3" required></textarea>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="checkout-section">
+                        <h3><i class="fas fa-credit-card"></i> Payment Method</h3>
+                        <div class="payment-options">
+                            <div class="payment-option">
+                                <input type="radio" id="creditCard" name="payment" value="card" checked>
+                                <label for="creditCard">
+                                    <i class="fas fa-credit-card"></i> Credit/Debit Card
+                                </label>
+                            </div>
+                            <div class="payment-option">
+                                <input type="radio" id="upi" name="payment" value="upi">
+                                <label for="upi">
+                                    <i class="fab fa-google-pay"></i> UPI
+                                </label>
+                            </div>
+                            <div class="payment-option">
+                                <input type="radio" id="cod" name="payment" value="cod">
+                                <label for="cod">
+                                    <i class="fas fa-money-bill-wave"></i> Cash on Delivery
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-sidebar">
+                    <div class="checkout-section order-summary">
+                        <h3>Order Summary</h3>
+                        <div id="summary-items">
+                            </div>
+                        <div class="summary-calculation">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="summary-subtotal">$0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <span id="summary-shipping">FREE</span>
+                            </div>
+                            <div class="summary-row total-row">
+                                <span>Total</span>
+                                <span id="summary-total">$0.00</span>
+                            </div>
+                        </div>
+                        <button class="place-order-btn" id="place-order-btn">Place Your Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="order-confirmation-modal" style="display: none;">
+        <div class="modal-content confirmation-content">
+            <i class="fas fa-check-circle confirmation-icon"></i>
+            <h3 id="modal-title">Order Placed Successfully!</h3>
+            <p id="modal-message">Thank you for your purchase. Your order is being processed and will be delivered soon.</p>
+            <button class="btn" id="back-to-home-btn">Continue Shopping</button>
+        </div>
+    </div>
+
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Shopping Cart</h2>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Subtotal:</span>
+                <span id="cart-subtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Shipping:</span>
+                <span id="cart-shipping">$0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Tax:</span>
+                <span id="cart-tax">$0.00</span>
+            </div>
+            <div class="summary-row summary-total">
+                <span>Total:</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button class="checkout-btn" id="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-content">
+            <h3 id="modal-title">Title</h3>
+            <p id="modal-message">Message</p>
+            <button class="btn" id="modal-close">Close</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span id="toast-message">Message</span>
+    </div>
+</body>
+</html>

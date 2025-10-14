@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CartNow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f5f7fa;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0066cc;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e6e6e6;
+            border-radius: 12px;
+            font-size: 1rem;
+        }
+        .form-group input.error {
+            border-color: #ff3333;
+        }
+        .error-message {
+            color: #ff3333;
+            font-size: 0.8rem;
+            display: none;
+        }
+        .form-group input.error + .error-message {
+            display: block;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #0066cc;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #004d99;
+        }
+        .links {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .links a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Login to CartNow</h2>
+    <form id="login-form">
+        <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <input type="email" id="login-email" placeholder="Enter your email" required>
+            <div class="error-message">Please enter a valid email address</div>
+        </div>
+        <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" placeholder="Enter your password" required>
+            <div class="error-message">Password must be at least 8 characters</div>
+        </div>
+        <button type="submit">Login</button>
+        <div class="links">
+            <a href="register.html">Don't have an account? Register</a>
+        </div>
+    </form>
+</div>
+
+<script>
+const loginForm = document.getElementById('login-form');
+
+loginForm.addEventListener('submit', function(e){
+    e.preventDefault(); 
+
+    const email = document.getElementById('login-email');
+    const password = document.getElementById('login-password');
+    let isValid = true;
+
+    // Basic validation
+    if (!email.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) { 
+        email.classList.add('error'); 
+        isValid = false; 
+    } else { 
+        email.classList.remove('error'); 
+    }
+    if (!password.value || password.value.length < 8) { 
+        password.classList.add('error'); 
+        isValid = false; 
+    } else { 
+        password.classList.remove('error'); 
+    }
+
+    if (!isValid) { 
+        alert("❌ Login failed! Please check your email and password."); 
+        return; 
+    }
+
+    // ---- ADMIN LOGIN ----
+    const adminEmail = "admin@Gmail.com";
+    const adminPass = "admin123";
+
+    if (email.value === adminEmail && password.value === adminPass) {
+        alert("👑 Welcome Admin! Redirecting to Admin Panel...");
+        localStorage.setItem("isAdminLoggedIn", "true");
+        window.location.href = "admin.html";
+        return;
+    }
+
+    // ---- USER LOGIN ----
+    const storedUser = localStorage.getItem('registeredUser');
+    const storedPass = localStorage.getItem('userPassword');
+    const storedName = localStorage.getItem('registeredName');
+
+    if (email.value === storedUser && password.value === storedPass) {
+        alert(`✅ Welcome back, ${storedName || 'User'}! Redirecting...`);
+        localStorage.setItem("isUserLoggedIn", "true");
+        window.location.href = "index.html"; 
+    } else {
+        alert("❌ Invalid email or password!");
+    }
+});
+</script>
+
+</body>
+</html>
