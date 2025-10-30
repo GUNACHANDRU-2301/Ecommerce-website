@@ -34,6 +34,7 @@ const CartNowApp = {
         this.wishlist = JSON.parse(localStorage.getItem('cartNowWishlist')) || [];
         this.updateWishlistIcons();
     },
+    
 
     // Complete product database
     products: [
@@ -1015,3 +1016,38 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// ===============================
+// FIXED BACK TO HOME BUTTON HANDLER
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+  const backToHome = document.getElementById("back-to-home");
+
+  if (backToHome) {
+    backToHome.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // Hide checkout section
+      const checkoutPage = document.getElementById("checkout-page");
+      if (checkoutPage) checkoutPage.style.display = "none";
+
+      // Show main site sections again
+      document.querySelectorAll("header, .hero, .categories, .products, .newsletter, footer")
+        .forEach((section) => {
+          if (section) section.style.display = "block";
+        });
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      // Show a quick message
+      if (typeof CartNowApp !== "undefined") {
+        CartNowApp.showToast("Back to Home");
+      }
+
+      console.log("Navigated back to Home successfully");
+    });
+  }
+});
+
+
