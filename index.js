@@ -1051,3 +1051,117 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// Checkout Form Validation
+// ✅ CartNow - Flipkart-style Professional Validation
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("checkoutForm");
+  if (!form) return;
+
+  const showError = (input, message) => {
+    const errorMsg = input.parentElement.querySelector(".error-msg");
+    input.classList.add("invalid");
+    input.classList.remove("valid");
+    errorMsg.textContent = message;
+  };
+
+  const clearError = (input) => {
+    const errorMsg = input.parentElement.querySelector(".error-msg");
+    input.classList.remove("invalid");
+    input.classList.add("valid");
+    errorMsg.textContent = "";
+  };
+
+  // 💡 Validation Rules
+  const validators = {
+    fullname: (val) =>
+      /^[A-Za-z\s]{3,30}$/.test(val)
+        ? true
+        : "Enter a valid name (letters only, 3–30 chars)",
+    phone: (val) =>
+      /^[6-9]\d{9}$/.test(val)
+        ? true
+        : "Enter a valid 10-digit mobile number",
+    pincode: (val) =>
+      /^\d{6}$/.test(val)
+        ? true
+        : "Enter a valid 6-digit pincode",
+    city: (val) =>
+      /^[A-Za-z\s]{2,30}$/.test(val)
+        ? true
+        : "Enter a valid city name (letters only)",
+    address: (val) =>
+      val.trim().length >= 5 && val.trim().length <= 100
+        ? true
+        : "Enter a valid address (5–100 chars)",
+  };
+
+  // 🔹 Real-time character restriction
+  const nameInput = form.querySelector("#fullname");
+  const phoneInput = form.querySelector("#phone");
+  const pinInput = form.querySelector("#pincode");
+
+  // Name → only letters & spaces
+  nameInput.addEventListener("input", () => {
+    nameInput.value = nameInput.value.replace(/[^A-Za-z\s]/g, "").slice(0, 30);
+  });
+
+  // Phone → only digits
+  phoneInput.addEventListener("input", () => {
+    phoneInput.value = phoneInput.value.replace(/[^0-9]/g, "").slice(0, 10);
+  });
+
+  // Pincode → only digits
+  pinInput.addEventListener("input", () => {
+    pinInput.value = pinInput.value.replace(/[^0-9]/g, "").slice(0, 6);
+  });
+
+  // 🔹 Real-time validation
+  form.querySelectorAll("input[required], textarea[required]").forEach((input) => {
+    input.addEventListener("input", () => {
+      const rule = validators[input.name];
+      if (rule) {
+        const check = rule(input.value.trim());
+        if (check === true) clearError(input);
+        else showError(input, check);
+      }
+    });
+  });
+
+  // 🔹 Submit Handler
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let valid = true;
+    let firstInvalid = null;
+
+    form.querySelectorAll("input[required], textarea[required]").forEach((input) => {
+      const rule = validators[input.name];
+      const check = rule ? rule(input.value.trim()) : true;
+
+      if (check !== true) {
+        showError(input, check);
+        if (!firstInvalid) firstInvalid = input;
+        valid = false;
+      } else {
+        clearError(input);
+      }
+    });
+
+    if (!valid && firstInvalid) {
+      firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+      firstInvalid.focus();
+      return;
+    }
+
+    // ✅ Success - Show SweetAlert2 Popup
+    Swal.fire({
+      icon: "success",
+      title: "Order Placed Successfully!",
+      text: "Your order has been placed and will be delivered soon. Thank you for shopping with CartNow!",
+      confirmButtonColor: "#28a745",
+    });
+
+    form.reset();
+    form.querySelectorAll(".valid").forEach((el) => el.classList.remove("valid"));
+  });
+});
+
